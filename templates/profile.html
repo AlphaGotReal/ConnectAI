@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="profile-container">
+    <h2>User Profile</h2>
+    <div class="profile-info">
+        {% if profile.avatar %}
+            <img src="{{ profile.avatar.url }}" alt="Avatar" class="profile_avatar">
+        {% else %}
+            <p>No avatar uploaded.</p>
+        {% endif %}
+        <p><strong>Personality:</strong> {{ profile.personality_type  }}</p>
+        <p><strong>Username:</strong> {{ profile.user.username }}</p>
+        <p><strong>Email:</strong> {{ profile.user.email }}</p>
+        <p><strong>Catchy Line:</strong> {{ profile.catchy_line }}</p>
+        <!-- Add other profile fields as needed -->
+        <button onclick="window.location.href='{% url 'edit_profile' %}'" class="btn-edit">Edit Profile</button>
+        <button onclick="window.location.href='{% url 'change_password' %}'" class="btn-change-password">Change Password</button>
+    </div>
+</div>
+{% endblock %}

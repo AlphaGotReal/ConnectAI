@@ -1,0 +1,128 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-h3ryFjLOsc/1XPyF7kr0BmSqZfUsW5E96leajBt4aFt07tS+JH6Pu75PYz6yimPcYIF5XNzgAnQbZmFcHQ3e1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="connect-container">
+    <h2>Personality Test</h2>
+    <form method="POST" action="{% url 'predict_personality' %}">
+        {% csrf_token %}
+        
+        <!-- Question 1 -->
+        <label for="id_question_1">Question 1: What do you enjoy doing in your free time?</label><br>
+        <input type="radio" id="id_question_1_option_a" name="question_1" value="option_a">
+        <label for="id_question_1_option_a">Reading</label><br>
+        <input type="radio" id="id_question_1_option_b" name="question_1" value="option_b">
+        <label for="id_question_1_option_b">Exercising</label><br>
+        <input type="radio" id="id_question_1_option_c" name="question_1" value="option_c">
+        <label for="id_question_1_option_c">Cooking or baking</label><br>
+        <input type="radio" id="id_question_1_option_d" name="question_1" value="option_d">
+        <label for="id_question_1_option_d">Watching movies or shows</label><br><br>
+        
+        <!-- Question 2 -->
+        <label for="id_question_2">Question 2: How do you usually handle stress?</label><br>
+        <input type="radio" id="id_question_2_option_a" name="question_2" value="option_a">
+        <label for="id_question_2_option_a">Go for a walk or exercise</label><br>
+        <input type="radio" id="id_question_2_option_b" name="question_2" value="option_b">
+        <label for="id_question_2_option_b">Read or meditate</label><br>
+        <input type="radio" id="id_question_2_option_c" name="question_2" value="option_c">
+        <label for="id_question_2_option_c">Talk to a friend or loved one</label><br>
+        <input type="radio" id="id_question_2_option_d" name="question_2" value="option_d">
+        <label for="id_question_2_option_d">Work on a hobby or project</label><br><br>
+        
+        <!-- Question 3 -->
+        <label for="id_question_3">Question 3: What kind of environment do you thrive in?</label><br>
+        <input type="radio" id="id_question_3_option_a" name="question_3" value="option_a">
+        <label for="id_question_3_option_a">Quiet and peaceful</label><br>
+        <input type="radio" id="id_question_3_option_b" name="question_3" value="option_b">
+        <label for="id_question_3_option_b">Dynamic and fast-paced</label><br>
+        <input type="radio" id="id_question_3_option_c" name="question_3" value="option_c">
+        <label for="id_question_3_option_c">Creative and collaborative</label><br>
+        <input type="radio" id="id_question_3_option_d" name="question_3" value="option_d">
+        <label for="id_question_3_option_d">Structured and organized</label><br><br>
+        
+        <!-- Question 4 -->
+        <label for="id_question_4">Question 4: How do you prefer to make decisions?</label><br>
+        <input type="radio" id="id_question_4_option_a" name="question_4" value="option_a">
+        <label for="id_question_4_option_a">Based on logical analysis</label><br>
+        <input type="radio" id="id_question_4_option_b" name="question_4" value="option_b">
+        <label for="id_question_4_option_b">Based on gut feeling or intuition</label><br>
+        <input type="radio" id="id_question_4_option_c" name="question_4" value="option_c">
+        <label for="id_question_4_option_c">After consulting with others</label><br>
+        <input type="radio" id="id_question_4_option_d" name="question_4" value="option_d">
+        <label for="id_question_4_option_d">By considering all available options</label><br><br>
+        
+        <!-- Question 5 -->
+        <label for="id_question_5">Question 5: What motivates you the most?</label><br>
+        <input type="radio" id="id_question_5_option_a" name="question_5" value="option_a">
+        <label for="id_question_5_option_a">Achieving personal goals</label><br>
+        <input type="radio" id="id_question_5_option_b" name="question_5" value="option_b">
+        <label for="id_question_5_option_b">Helping others succeed</label><br>
+        <input type="radio" id="id_question_5_option_c" name="question_5" value="option_c">
+        <label for="id_question_5_option_c">Exploring new ideas or possibilities</label><br>
+        <input type="radio" id="id_question_5_option_d" name="question_5" value="option_d">
+        <label for="id_question_5_option_d">Maintaining stability and routine</label><br><br>
+        
+        <!-- Question 6 -->
+        <label for="id_question_6">Question 6: How do you prefer to collaborate with others?</label><br>
+        <input type="radio" id="id_question_6_option_a" name="question_6" value="option_a">
+        <label for="id_question_6_option_a">Independently on specific tasks</label><br>
+        <input type="radio" id="id_question_6_option_b" name="question_6" value="option_b">
+        <label for="id_question_6_option_b">In small, close-knit teams</label><br>
+        <input type="radio" id="id_question_6_option_c" name="question_6" value="option_c">
+        <label for="id_question_6_option_c">In large, diverse groups</label><br>
+        <input type="radio" id="id_question_6_option_d" name="question_6" value="option_d">
+        <label for="id_question_6_option_d">As a leader guiding the team</label><br><br>
+        
+        <!-- Question 7 -->
+        <label for="id_question_7">Question 7: How do you typically approach new challenges?</label><br>
+        <input type="radio" id="id_question_7_option_a" name="question_7" value="option_a">
+        <label for="id_question_7_option_a">With careful planning and strategy</label><br>
+        <input type="radio" id="id_question_7_option_b" name="question_7" value="option_b">
+        <label for="id_question_7_option_b">By diving in and learning as I go</label><br>
+        <input type="radio" id="id_question_7_option_c" name="question_7" value="option_c">
+        <label for="id_question_7_option_c">By seeking advice and input from others</label><br>
+        <input type="radio" id="id_question_7_option_d" name="question_7" value="option_d">
+        <label for="id_question_7_option_d">By approaching it from multiple angles</label><br><br>
+        
+        <!-- Question 8 -->
+        <label for="id_question_8">Question 8: How do you prefer to communicate with others?</label><br>
+        <input type="radio" id="id_question_8_option_a" name="question_8" value="option_a">
+        <label for="id_question_8_option_a">Through written communication</label><br>
+        <input type="radio" id="id_question_8_option_b" name="question_8" value="option_b">
+        <label for="id_question_8_option_b">Through verbal discussions</label><br>
+        <input type="radio" id="id_question_8_option_c" name="question_8" value="option_c">
+        <label for="id_question_8_option_c">Through visual or creative means</label><br>
+        <input type="radio" id="id_question_8_option_d" name="question_8" value="option_d">
+        <label for="id_question_8_option_d">Through structured and organized formats</label><br><br>
+        
+        <!-- Question 9 -->
+        <label for="id_question_9">Question 9: How do you respond to unexpected changes?</label><br>
+        <input type="radio" id="id_question_9_option_a" name="question_9" value="option_a">
+        <label for="id_question_9_option_a">Adapt quickly and find solutions</label><br>
+        <input type="radio" id="id_question_9_option_b" name="question_9" value="option_b">
+        <label for="id_question_9_option_b">Assess the situation and take measured steps</label><br>
+        <input type="radio" id="id_question_9_option_c" name="question_9" value="option_c">
+        <label for="id_question_9_option_c">Seek advice and guidance from others</label><br>
+        <input type="radio" id="id_question_9_option_d" name="question_9" value="option_d">
+        <label for="id_question_9_option_d">Stick to a plan or routine despite changes</label><br><br>
+        
+        <!-- Question 10 -->
+        <label for="id_question_10">Question 10: What role do you usually take in group settings?</label><br>
+        <input type="radio" id="id_question_10_option_a" name="question_10" value="option_a">
+        <label for="id_question_10_option_a">Listener and observer</label><br>
+        <input type="radio" id="id_question_10_option_b" name="question_10" value="option_b">
+        <label for="id_question_10_option_b">Initiator and idea generator</label><br>
+        <input type="radio" id="id_question_10_option_c" name="question_10" value="option_c">
+        <label for="id_question_10_option_c">Coordinator and organizer</label><br>
+        <input type="radio" id="id_question_10_option_d" name="question_10" value="option_d">
+        <label for="id_question_10_option_d">Decision-maker and leader</label><br><br>
+        
+        <!-- Description -->
+        <label for="id_description">Describe Yourself:</label><br>
+        <textarea id="id_description" name="description" placeholder="Describe yourself..." rows="4" cols="50"></textarea><br><br>
+        
+        <!-- Submit Button -->
+        <button type="submit" class="btn-save">Submit Test</button>
+    </form>
+</div>
+{% endblock %}

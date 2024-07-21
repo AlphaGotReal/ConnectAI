@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-h3ryFjLOsc/1XPyF7kr0BmSqZfUsW5E96leajBt4aFt07tS+JH6Pu75PYz6yimPcYIF5XNzgAnQbZmFcHQ3e1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="result-container">
+    <h2>Prediction Result</h2>
+    {% if predicted_type %}
+        <p>Your predicted personality type is: <strong>{{ predicted_type }}</strong></p>
+        <p>Compatible personalities: <strong>{{ compatible_personalities }}</strong></p>
+    {% else %}
+        <p>No prediction available.</p>
+    {% endif %}
+
+    <h3>Compatible Users:</h3>
+    <ul>
+        {% for user in compatible_users %}
+            <li>{{ user.user.username }} - {{ user.personality_type }}</li>
+        {% empty %}
+            <h5>No compatible users found.</h5>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'connect' %}" class="btn-back">Go to Connect</a>
+</div>
+
+{% endblock %}

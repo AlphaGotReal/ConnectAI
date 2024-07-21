@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectAI</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body>
+    <div class="container container-custom">
+        <!-- Brand Name -->
+        <div class="brand-name text-center my-4">
+            <img src="/static/logo.jpg" alt="ConnectAI Logo" class="brand-logo">
+        </div>
+
+        <div class="avatar-user-container">
+            <div class="avatar-container">
+                {% block avatar %}
+                    {% if user.profile.avatar %}
+                        <img src="{{ user.profile.avatar.url }}" alt="Avatar" class="avatar">
+                    {% else %}
+                        <!-- Default avatar or placeholder image -->
+                        <img src="{% static 'images/default_avatar.png' %}" alt="Avatar" class="avatar">
+                    {% endif %}
+                {% endblock %}
+            </div>
+            <div class="user-info">
+                <h2>{{ request.user }}</h2>
+            </div>
+        </div>
+        
+        {% include 'navbar.html' %}
+        
+        {% block content %}
+
+        {% if messages %}
+        <ul class="messages list-unstyled">
+            {% for message in messages %}
+            <li class="alert alert-info">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        {% endblock %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
