@@ -131,12 +131,12 @@ def personality_test(request):
     return render(request, 'personality_test.html', {}) 
 
 cat_model = CatBoostClassifier()
-cat_model.load_model('/home/neil/Projects/ConnectAI/connectai/models/catboost_model.bin')
+cat_model.load_model('connectai/models/catboost_model.bin')
 
 # Load the other required objects
-with open('/home/neil/Projects/ConnectAI/connectai/models/tfidf_vectorizer.pkl', 'rb') as f:
+with open('connectai/models/tfidf_vectorizer.pkl', 'rb') as f:
     tfidf_vectorizer = pickle.load(f)
-with open('/home/neil/Projects/ConnectAI/connectai/models/LabelEncoder.pkl', 'rb') as f:
+with open('connectai/models/LabelEncoder.pkl', 'rb') as f:
     label_encoder = pickle.load(f)
 
 compatibility_matrix = {

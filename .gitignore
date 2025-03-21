@@ -1,0 +1,5 @@
+venv/
+base/__pycache__/
+connectai/__pycache__/
+
+
