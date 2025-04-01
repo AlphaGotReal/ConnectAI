@@ -1,240 +1,237 @@
 /* Specific body styles */
 body {
-    background-image: url('/static/background.jpg');
-    background-size: cover; /* Cover the entire viewport */
-    background-repeat: no-repeat; /* Prevent image from repeating */
-    background-position: center;
-    background-color: #222121; /* Dark background color */
-    color: #f0f4f8; /* Light text color */
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
+  background-image: url("/static/background.jpg");
+  background-size: cover; /* Cover the entire viewport */
+  background-repeat: no-repeat; /* Prevent image from repeating */
+  background-position: center;
+  background-color: #222121; /* Dark background color */
+  color: #f0f4f8; /* Light text color */
+  font-family: "Roboto", "Times New Roman", Times, serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
 }
 
 .container {
-    width: 360px;
-    max-width: 100%;
-    padding: 40px;
-    background-color: #161B22;
-    border: 1px solid #30363D;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(27, 31, 35, 0.12), 0 8px 24px rgba(27, 31, 35, 0.12);
-    text-align: center;
-    margin: 0 auto; /* Center align the container */
+  width: 360px;
+  max-width: 100%;
+  padding: 40px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(27, 31, 35, 0.12),
+    0 8px 24px rgba(27, 31, 35, 0.12);
+  text-align: center;
+  margin: 0 auto; /* Center align the container */
 }
 
 .btn-primary {
-    background-color: #007bff; /* Blue background color */
-    color: #fff; /* White text color */
-    padding: 12px 24px; /* Padding inside the button */
-    border: none; /* Remove border */
-    border-radius: 6px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    display: inline-flex; /* Inline flex for icon alignment */
-    align-items: center; /* Center align icon and text vertically */
-    font-size: 16px; /* Font size */
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  padding: 12px 24px; /* Padding inside the button */
+  border: none; /* Remove border */
+  border-radius: 6px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  display: inline-flex; /* Inline flex for icon alignment */
+  align-items: center; /* Center align icon and text vertically */
+  font-size: 16px; /* Font size */
 }
 
 .btn-primary i {
-    margin-right: 8px; /* Space between icon and text */
+  margin-right: 8px; /* Space between icon and text */
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
 .mt-3 {
-    margin-top: 16px; /* Top margin */
+  margin-top: 16px; /* Top margin */
 }
-
 
 /* Brand name styles */
 .brand-name {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 30vh; /* Full viewport height to center vertically */
-    text-align: center;
-    padding: 0; /* Remove any padding */
-    margin: 0; /* Remove any margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30vh; /* Full viewport height to center vertically */
+  text-align: center;
+  padding: 0; /* Remove any padding */
+  margin: 0; /* Remove any margin */
 }
 
 .brand-logo {
-    max-width: 200px; /* Adjust as needed for smaller size */
-    height: 200px; /* Maintain aspect ratio */
-    margin: 0; /* Center the image horizontally */
+  max-width: 200px; /* Adjust as needed for smaller size */
+  height: 200px; /* Maintain aspect ratio */
+  margin: 0; /* Center the image horizontally */
 }
-
 
 /* Heading styles */
 h1 {
-    color: #C9D1D9;
-    font-size: 24px;
-    font-weight: 400;
-    margin-bottom: 24px;
+  color: #c9d1d9;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 24px;
 }
 
 /* Label styles */
 label {
-    display: block;
-    margin-bottom: 8px;
-    color: #C9D1D9;
-    text-align: left;
+  display: block;
+  margin-bottom: 8px;
+  color: #c9d1d9;
+  text-align: left;
 }
 
 /* Input styles */
 input[type="text"],
 input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #30363D;
-    border-radius: 6px;
-    background-color: #0D1117;
-    color: #C9D1D9;
-    box-sizing: border-box;
-    font-size: 14px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
 /* Submit button styles */
 input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #3498db;
-    border: 1px solid rgba(27, 31, 35, 0.15);
-    border-radius: 6px;
-    color: #FFFFFF;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  width: 100%;
+  padding: 10px;
+  background-color: #3498db;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: #2e5ca0;
+  background-color: #2e5ca0;
 }
 
 /* Paragraph styles */
 p {
-    text-align: center;
-    color: #8B949E;
+  text-align: center;
+  color: #8b949e;
 }
 
 /* Anchor link styles */
 a {
-    color: #58A6FF;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    margin-top: 10px;
+  color: #58a6ff;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Messages styles */
 .messages {
-    background-color: #DA3633;
-    color: white;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    text-align: center;
+  background-color: #da3633;
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  text-align: center;
 }
 
 /* Form group styles */
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .form-container {
-    background-color: #161B22;
-    padding: 40px;
-    border-radius: 8px;
-    max-width: 800px; /* Set a reasonable width for the container */
-    margin: 0 auto;
-    color: #C9D1D9;
-    border: 1px solid #30363D;
-    box-shadow: 0 4px 8px rgba(27, 31, 35, 0.2), 0 16px 32px rgba(27, 31, 35, 0.2); /* Increased blur and spread radius */
-    overflow-y: auto;
-    max-height: 80vh;
+  background-color: #161b22;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 800px; /* Set a reasonable width for the container */
+  margin: 0 auto;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  box-shadow: 0 4px 8px rgba(27, 31, 35, 0.2), 0 16px 32px rgba(27, 31, 35, 0.2); /* Increased blur and spread radius */
+  overflow-y: auto;
+  max-height: 80vh;
 }
-
 
 /* Outer container styles */
 .outer-container {
-    width: 100%;
-    max-width: 1000px; /* Set a wider width for the outer container */
-    margin: 0 auto;
-    overflow: auto; /* Add scroll bar if necessary */
+  width: 100%;
+  max-width: 1000px; /* Set a wider width for the outer container */
+  margin: 0 auto;
+  overflow: auto; /* Add scroll bar if necessary */
 }
 
 /* Heading 2 styles */
 h2 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* Form group label styles */
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #C9D1D9;
-    text-align: left;
+  display: block;
+  margin-bottom: 5px;
+  color: #c9d1d9;
+  text-align: left;
 }
 
 /* Form group input, select, textarea styles */
 .form-group input,
 .form-group select,
 .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #30363D;
-    border-radius: 6px;
-    background-color: #0D1117;
-    color: #C9D1D9;
-    box-sizing: border-box;
-    font-size: 14px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
 /* Avatar input styles */
 input[type="file"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #30363D;
-    border-radius: 6px;
-    background-color: #3498db;
-    color: #C9D1D9;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  background-color: #3498db;
+  color: #c9d1d9;
 }
 
 /* Register button styles */
 .btn-register {
-    background-color: #3498db;
-    color: #fff;
-    padding: 10px 20px; 
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-    margin-top: 20px;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 20px;
 }
 
 .btn-register:hover {
-    background-color: #2980b9;
+  background-color: #2980b9;
 }
 
 /* Multi-line placeholder styling */
 .form-group textarea::placeholder {
-    white-space: pre-line; /* Preserve line breaks */
+  white-space: pre-line; /* Preserve line breaks */
 }
-

@@ -1,58 +1,78 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ConnectAI</title>
-    <link rel="stylesheet" href="{% static 'styles/login.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="container">
-        <div class="brand-name text-center my-4">
-            <img src="/static/logo.jpg" alt="ConnectAI Logo" class="brand-logo">
+      <div class="brand-name text-center my-4">
+        <img src="/static/logo.jpg" alt="ConnectAI Logo" class="brand-logo" />
+      </div>
+      {% block content %} {% if page == 'login' %}
+      <div>
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div>
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+              placeholder="Enter Username"
+            />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Enter Password"
+            />
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary mt-3">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+          </div>
+          <p class="mt-3">Haven't already signed up?</p>
+          <a href="/register/" class="mb-4"
+            ><i class="fas fa-user-plus"></i> Sign Up</a
+          >
+        </form>
+      </div>
+      {% else %}
+      <div class="outer-container">
+        <div class="form-container">
+          <h2><i class="fas fa-user-plus"></i> Register</h2>
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">{{ form.as_p }}</div>
+            <button type="submit" class="btn btn-register">
+              <i class="fas fa-user-plus"></i> Register
+            </button>
+            <p class="mt-3">Already have an account?</p>
+            <a href="{% url 'login' %}" class="mb-4"
+              ><i class="fas fa-sign-in-alt"></i> Sign in</a
+            >
+          </form>
         </div>
-        {% block content %}
-        {% if page == 'login' %}
-        <div>
-            <form method="POST" action="">
-                {% csrf_token %}
-                <div>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" class="form-control" placeholder="Enter Username">
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-primary mt-3">
-                        <i class="fas fa-sign-in-alt"></i> Login
-                      </button>
-                </div>
-                <p class="mt-3">Haven't already signed up?</p>
-                <a href="/register/" class="mb-4"><i class="fas fa-user-plus"></i> Sign Up</a>
-            </form>
-        </div>
-        {% else %}
-        <div class="outer-container">
-            <div class="form-container">
-                <h2><i class="fas fa-user-plus"></i> Register</h2>
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        {{ form.as_p }}
-                    </div>
-                    <button type="submit" class="btn btn-register"><i class="fas fa-user-plus"></i> Register</button>
-                    <p class="mt-3">Already have an account?</p>
-                    <a href="{% url 'login' %}" class="mb-4"><i class="fas fa-sign-in-alt"></i> Sign in</a>
-                </form>
-            </div>
-        </div>
-        {% endif %}
-        {% endblock content %}
+      </div>
+      {% endif %} {% endblock content %}
     </div>
-</body>
+  </body>
 </html>

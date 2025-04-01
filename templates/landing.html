@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <title>ConnectAI</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'styles/landing.css' %}" />
+  </head>
+  <body>
+    <navbar>
+      <div class="app-name">CONNECT<span class="alt-text">.ai</span></div>
+      <div>
+        <a class="nav-element">Contact Us</a>
+        <a class="nav-element">Features</a>
+        <a class="nav-element">How it works</a>
+        <a href="{% url 'login' %}" class="login-btn">Login</a>
+        <a href="{% url 'register' %}" class="register-btn">Register</a>
+      </div>
+    </navbar>
+    <div class="container">
+      <div class="row align-items-start">
+        <div class="col-6">
+          <div class="landing-text">
+            <h1 class="title-text">
+              Connecting Minds, Enhancing Conversations
+            </h1>
+            <p>
+              ConnectAI is a platform that bridges the gap between businesses
+              and AI experts, enabling seamless collaboration to build
+              cutting-edge AI solutions.
+            </p>
+            <a href="{% url 'register' %}" class="register-btn">Get Started</a>
+            <div class="row">
+              <div class="circle-overlap">
+                <img
+                  alt="project member"
+                  src="https://i.imgur.com/C7sGXc6.png"
+                />
+                <img
+                  alt="project member"
+                  src="https://i.imgur.com/C7sGXc6.png"
+                />
+                <img
+                  alt="project member"
+                  src="https://i.imgur.com/C7sGXc6.png"
+                />
+              </div>
+              <h5 class="sub-text">· 400 people online</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <img
+            src="{% static 'landing-hero.jpg' %}"
+            alt="Landing Image"
+            height="500"
+            width="700"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

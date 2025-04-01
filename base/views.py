@@ -29,6 +29,9 @@ from django.http import HttpResponseBadRequest
 def home(request):
     return render(request, 'home.html')
 
+def landing(request):
+    return render(request, 'landing.html')
+
 def room(request):
     rooms = Room.objects.all()
     context = {'rooms': rooms} 
@@ -130,14 +133,14 @@ def connect(request):
 def personality_test(request):
     return render(request, 'personality_test.html', {}) 
 
-cat_model = CatBoostClassifier()
-cat_model.load_model('connectai/models/catboost_model.bin')
+# cat_model = CatBoostClassifier()
+# cat_model.load_model('connectai/models/catboost_model.bin')
 
 # Load the other required objects
-with open('connectai/models/tfidf_vectorizer.pkl', 'rb') as f:
-    tfidf_vectorizer = pickle.load(f)
-with open('connectai/models/LabelEncoder.pkl', 'rb') as f:
-    label_encoder = pickle.load(f)
+# with open('connectai/models/tfidf_vectorizer.pkl', 'rb') as f:
+#     tfidf_vectorizer = pickle.load(f)
+# with open('connectai/models/LabelEncoder.pkl', 'rb') as f:
+#     label_encoder = pickle.load(f)
 
 compatibility_matrix = {
     'INTJ': ['ENTP', 'INTP', 'ENTJ', 'INFJ'],

@@ -2,368 +2,369 @@
 
 /* Dark background and light text */
 body {
-    background-image: url('/static/background.jpg');
-    background-size: cover; /* Cover the entire viewport */
-    background-repeat: no-repeat; /* Prevent image from repeating */
-    background-position: center;
-    font-family: 'Arial', sans-serif;
-    background-color: #0d1117; /* Dark background similar to GitHub */
-    color: #c9d1d9; /* Light text color */
+  /* background-image: url('/static/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; */
+  font-family: "Arial", sans-serif;
+  background-color: #c9d1d9; /* Dark background similar to GitHub */
+  color: #0d1117; /* Light text color */
 }
 
 .brand-name {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 30vh; /* Full viewport height to center vertically */
-    text-align: center;
-    padding: 0; /* Remove any padding */
-    margin: 0; /* Remove any margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30vh; /* Full viewport height to center vertically */
+  text-align: center;
+  padding: 0; /* Remove any padding */
+  margin: 0; /* Remove any margin */
 }
 
 .brand-logo {
-    max-width: 300px; /* Adjust as needed for smaller size */
-    height: 300px; /* Maintain aspect ratio */
-    margin: 0; /* Center the image horizontally */
+  max-width: 300px; /* Adjust as needed for smaller size */
+  height: 300px; /* Maintain aspect ratio */
+  margin: 0; /* Center the image horizontally */
 }
 
-.container-custom { 
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.container-custom {
+  width: 100%;
+  margin: 0;
 }
 
 h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #c9d1d9; /* Light text color */
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #c9d1d9; /* Light text color */
 }
 
 p {
-    color: #c9d1d9; /* Light text color */
+  color: #c9d1d9; /* Light text color */
 }
 
 .brand-name {
-    font-size: 50px;
-    font-weight: bold;
-    color: #58a6ff; /* GitHub blue */
-    margin: 0;
-    padding: 0;
+  font-size: 50px;
+  font-weight: bold;
+  color: #58a6ff; /* GitHub blue */
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-custom {
-    background-color: #0a1628; /* Dark background */
+  background-color: #0a1628; /* Dark background */
 }
 
 .navbar-custom .nav-link {
-    color: #c9d1d9; /* Light text color */
+  color: #c9d1d9; /* Light text color */
 }
 
 .navbar-custom .nav-link:hover {
-    background-color: #161b22; /* Darker background on hover */
-    color: #ffffff; /* White on hover */
-    border-radius: 5px;
+  background-color: #161b22; /* Darker background on hover */
+  color: #ffffff; /* White on hover */
+  border-radius: 5px;
 }
 
 .intro-text p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    background-color: #0d1117; /* Dark background */
-    color: #c9d1d9; /* Light text color */
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    margin-bottom: 30px;
+  font-size: 1.2em;
+  line-height: 1.6;
+  background-color: #0d1117; /* Dark background */
+  color: #c9d1d9; /* Light text color */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  margin-bottom: 30px;
 }
 
 .features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .feature {
-    background-color: #101a2a; /* Dark background */
-    color: #c9d1d9; /* Light text color */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    flex: 1 1 calc(33.333% - 20px);
-    margin: 10px;
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
+  background-color: #101a2a; /* Dark background */
+  color: #c9d1d9; /* Light text color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  flex: 1 1 calc(33.333% - 20px);
+  margin: 10px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
 }
 
 .feature h3 {
-    font-size: 1.8em;
-    margin-bottom: 10px;
-    color: #58a6ff; /* GitHub blue */
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #58a6ff; /* GitHub blue */
 }
 
 .feature p {
-    font-size: 1em;
-    line-height: 1.5;
-    color: #c9d1d9; /* Light text color */
+  font-size: 1em;
+  line-height: 1.5;
+  color: #c9d1d9; /* Light text color */
 }
 
 .feature:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 @media (max-width: 768px) {
-    .features {
-        flex-direction: column;
-    }
+  .features {
+    flex-direction: column;
+  }
 
-    .feature {
-        flex: 1 1 100%;
-        margin-bottom: 20px;
-    }
+  .feature {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+  }
 
-    .connect-container {
-        padding: 20px;
-        max-width: 90%;
-    }
+  .connect-container {
+    padding: 20px;
+    max-width: 90%;
+  }
 
-    .connect-container label, .connect-container textarea {
-        width: 100%;
-    }
+  .connect-container label,
+  .connect-container textarea {
+    width: 100%;
+  }
 
-    .result-container {
-        padding: 15px;
-        max-width: 90%;
-    }
+  .result-container {
+    padding: 15px;
+    max-width: 90%;
+  }
 
-    .btn-back {
-        width: 100%;
-        text-align: center;
-    }
+  .btn-back {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .avatar-user-container {
-    display: flex;
-    align-items: center; /* Vertically center items */
-    padding: 10px; /* Padding around the avatar and user info */
+  display: flex;
+  align-items: center; /* Vertically center items */
+  padding: 10px; /* Padding around the avatar and user info */
 }
 
 .avatar-container {
-    flex: 0 0 auto; /* Don't grow or shrink, stay auto-sized */
-    margin-right: 10px; /* Margin between avatar and user info */
+  flex: 0 0 auto; /* Don't grow or shrink, stay auto-sized */
+  margin-right: 10px; /* Margin between avatar and user info */
 }
 
 .avatar {
-    width: 75px; /* Adjust avatar width */
-    height: 75px; /* Adjust avatar height */
-    border-radius: 50%; /* Make avatar circular */
-    object-fit: cover; /* Ensure the image covers the avatar space */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  width: 75px; /* Adjust avatar width */
+  height: 75px; /* Adjust avatar height */
+  border-radius: 50%; /* Make avatar circular */
+  object-fit: cover; /* Ensure the image covers the avatar space */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
 .user-info {
-    flex: 1; /* Grow to fill remaining space */
+  flex: 1; /* Grow to fill remaining space */
 }
 
 .user-info h2 {
-    font-size: 1.5em; /* Adjust font size for user name */
-    color: #ffffff; /* White text color */
-    margin: 0; /* Remove default margins */
+  font-size: 1.5em; /* Adjust font size for user name */
+  color: #ffffff; /* White text color */
+  margin: 0; /* Remove default margins */
 }
 
-
 .profile-container {
-    background-color: #0d1117; /* Dark background */
-    padding: 40px;
-    border-radius: 8px;
-    margin: auto; /* Center align the container */
-    max-width: 600px; /* Limit the width of the container */
-    margin-bottom: 20px; /* Reduced bottom margin */
+  background-color: #0d1117; /* Dark background */
+  padding: 40px;
+  border-radius: 8px;
+  margin: auto; /* Center align the container */
+  max-width: 600px; /* Limit the width of the container */
+  margin-bottom: 20px; /* Reduced bottom margin */
 }
 
 .profile-info {
-    font-size: 18px;
-    color: #c9d1d9; /* Light grey text color */
+  font-size: 18px;
+  color: #c9d1d9; /* Light grey text color */
 }
 
 .profile-info strong {
-    font-weight: bold;
-    color: #ffffff; /* White text color for strong elements */
+  font-weight: bold;
+  color: #ffffff; /* White text color for strong elements */
 }
 
 .profile-description {
-    font-style: italic;
-    color: #8b949e; /* GitHub grey */
-    margin-bottom: 5px; /* Add some space below description */
+  font-style: italic;
+  color: #8b949e; /* GitHub grey */
+  margin-bottom: 5px; /* Add some space below description */
 }
 
 .profile_avatar {
-    max-width: 300px; /* Adjust avatar width */
-    max-height: 300px; /* Adjust avatar height */
-    object-fit: cover; /* Ensure the image covers the avatar space */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  max-width: 300px; /* Adjust avatar width */
+  max-height: 300px; /* Adjust avatar height */
+  object-fit: cover; /* Ensure the image covers the avatar space */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
-.btn-edit, .btn-change-password {
-    background-color: #007bff; /* GitHub blue button color */
-    padding: 12px 24px;
-    color: #ffffff; /* White text color */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 10px; /* Spacing between buttons */
-    margin-top: 20px; /* Top margin */
-    transition: background-color 0.3s ease-in-out; /* Smooth transition */
+.btn-edit,
+.btn-change-password {
+  background-color: #007bff; /* GitHub blue button color */
+  padding: 12px 24px;
+  color: #ffffff; /* White text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px; /* Spacing between buttons */
+  margin-top: 20px; /* Top margin */
+  transition: background-color 0.3s ease-in-out; /* Smooth transition */
 }
 
-.btn-edit:hover, .btn-change-password:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+.btn-edit:hover,
+.btn-change-password:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
 .btn-edit {
-    margin-left: 0; /* Adjust margin for left button */
+  margin-left: 0; /* Adjust margin for left button */
 }
 
 .btn-change-password {
-    margin-left: 10px; /* Adjust margin for right button */
+  margin-left: 10px; /* Adjust margin for right button */
 }
 
 .btn-custom {
-    margin-top: 10px;
-    text-decoration: none;
-    color: #58a6ff; /* GitHub blue */
+  margin-top: 10px;
+  text-decoration: none;
+  color: #58a6ff; /* GitHub blue */
 }
 
 .btn-custom:hover {
-    text-decoration: underline;
-    color: #005cc5; /* Darker GitHub blue on hover */
+  text-decoration: underline;
+  color: #005cc5; /* Darker GitHub blue on hover */
 }
 
 .btn-cancel {
-    background-color: #dc3545; /* Red button color for cancel */
-    padding: 12px 24px;
-    color: #ffffff; /* White text color */
+  background-color: #dc3545; /* Red button color for cancel */
+  padding: 12px 24px;
+  color: #ffffff; /* White text color */
 }
 
 .btn-cancel:hover {
-    background-color: #d9192c; /* Darker red on hover */
+  background-color: #d9192c; /* Darker red on hover */
 }
 
 /* Edit profile form */
 .edit-profile-container {
-    background-color: #0d1117; /* Dark background */
-    padding: 40px;
-    border-radius: 8px;
-    margin: auto; /* Center align the container */
-    max-width: 600px; /* Limit the width of the container */
-    margin-bottom: 20px; /* Reduced bottom margin */
+  background-color: #0d1117; /* Dark background */
+  padding: 40px;
+  border-radius: 8px;
+  margin: auto; /* Center align the container */
+  max-width: 600px; /* Limit the width of the container */
+  margin-bottom: 20px; /* Reduced bottom margin */
 }
 
 .edit-profile-inner {
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #161b22; /* Slightly lighter background color */
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #161b22; /* Slightly lighter background color */
 }
 
 .edit-profile-container h2 {
-    color: #c9d1d9; /* White text color for headings */
-    margin-bottom: 20px;
+  color: #c9d1d9; /* White text color for headings */
+  margin-bottom: 20px;
 }
 
 .edit-profile-container label {
-    color: #c9d1d9; /* White text color for labels */
+  color: #c9d1d9; /* White text color for labels */
 }
 
-.edit-profile-container input[type=text],
+.edit-profile-container input[type="text"],
 .edit-profile-container textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #3e434a; /* GitHub darker border */
-    background-color: #161b22; /* Medium dark background color */
-    color: #c9d1d9; /* Light grey text color */
-    border-radius: 4px;
-    margin-bottom: 20px;
-    box-sizing: border-box; /* Ensure padding and border are included in width */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #3e434a; /* GitHub darker border */
+  background-color: #161b22; /* Medium dark background color */
+  color: #c9d1d9; /* Light grey text color */
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
 .btn-save {
-    background-color: #28a745; /* Green button color for save */
-    padding: 12px 24px;
-    color: #ffffff; /* White text color */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px; /* Top margin */
-    transition: background-color 0.3s ease-in-out; /* Smooth transition */
+  background-color: #28a745; /* Green button color for save */
+  padding: 12px 24px;
+  color: #ffffff; /* White text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px; /* Top margin */
+  transition: background-color 0.3s ease-in-out; /* Smooth transition */
 }
 
 .btn-save:hover {
-    background-color: #218838; /* Darker green on hover */
+  background-color: #218838; /* Darker green on hover */
 }
 
 .connect-container {
-    background-color: #101a2a; /* Dark background color */
-    color: #ffffff; /* Light text color */
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
+  background-color: #101a2a; /* Dark background color */
+  color: #ffffff; /* Light text color */
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
 }
 
 .connect-container h2 {
-    color: #ffffff; /* Light text color for headings */
+  color: #ffffff; /* Light text color for headings */
 }
 
 .connect-container label {
-    color: #ffffff; /* Light text color for labels */
+  color: #ffffff; /* Light text color for labels */
 }
 
 textarea {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #218838; /* Darker border color */
-    border-radius: 6px;
-    font-size: 16px;
-    resize: vertical;
-    background-color: #343a40; /* Dark background color */
-    color: #ffffff; /* Light text color */
-    outline: none; /* Remove default focus outline */
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #218838; /* Darker border color */
+  border-radius: 6px;
+  font-size: 16px;
+  resize: vertical;
+  background-color: #343a40; /* Dark background color */
+  color: #ffffff; /* Light text color */
+  outline: none; /* Remove default focus outline */
 }
 
 .result-container {
-    background-color: #1a1a1a; /* Dark background */
-    color: #ffffff; /* Light text color */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    text-align: center; /* Center align text */
-    max-width: 400px;
-    margin: 0 auto; /* Center horizontally */
+  background-color: #1a1a1a; /* Dark background */
+  color: #ffffff; /* Light text color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  text-align: center; /* Center align text */
+  max-width: 400px;
+  margin: 0 auto; /* Center horizontally */
 }
 
 .result-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .result-container p {
-    font-size: 18px;
-    margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .btn-back {
-    display: inline-block;
-    background-color: #007bff; /* Blue button */
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  background-color: #007bff; /* Blue button */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .btn-back:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3; /* Darker shade on hover */
 }
