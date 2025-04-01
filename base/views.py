@@ -18,8 +18,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
-from catboost import CatBoostClassifier
-from sklearn.feature_extraction.text import TfidfVectorizer
+from random import randint
+# from catboost import CatBoostClassifier
+# from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import pickle
 import os
@@ -118,11 +119,11 @@ def connect(request):
         profile, created = Profile.objects.get_or_create(user=request.user)
         if profile.personality_type:
             # Fetch compatible personalities
-            compatible_personalities = compatibility_matrix.get(profile.personality_type, [])
+            # compatible_personalities = compatibility_matrix.get(profile.personality_type, [])
             # Fetch other users with compatible personalities
-            compatible_users = Profile.objects.filter(personality_type__in=compatible_personalities).exclude(user=request.user)
+            # compatible_users = Profile.objects.filter(personality_type__in=compatible_personalities).exclude(user=request.user)
             # Render the connect page with compatible users
-            return render(request, 'connect.html', {'compatible_users': compatible_users})
+            return render(request, 'connect.html', {'compatible_users': ["test"]})
         else:
             # Redirect to personality test page if personality_type is not set
             return redirect('personality_test')
@@ -132,16 +133,6 @@ def connect(request):
     
 def personality_test(request):
     return render(request, 'personality_test.html', {}) 
-
-# cat_model = CatBoostClassifier()
-# cat_model.load_model('connectai/models/catboost_model.bin')
-
-# Load the other required objects
-# with open('connectai/models/tfidf_vectorizer.pkl', 'rb') as f:
-#     tfidf_vectorizer = pickle.load(f)
-# with open('connectai/models/LabelEncoder.pkl', 'rb') as f:
-#     label_encoder = pickle.load(f)
-
 compatibility_matrix = {
     'INTJ': ['ENTP', 'INTP', 'ENTJ', 'INFJ'],
     'INTP': ['ENTJ', 'INTJ', 'ENTP', 'INFP'],
@@ -161,47 +152,64 @@ compatibility_matrix = {
     'ESFP': ['ISFP', 'ESTP', 'ENFP', 'ESFJ']
 }
 
-def match_personality(user_text, model, tfidf_vectorizer, label_encoder, compatibility_matrix):
-    # Vectorize the user_text using the tfidf_vectorizer
-    user_vectorized = tfidf_vectorizer.transform([user_text])
+def personality_quiz(answers):
+    global E, I, S, N, T, F, J, P
+    """Determines personality type based on quiz answers"""
     
-    # Predict the personality type
-    predicted_label = model.predict(user_vectorized)[0]
-    predicted_type = label_encoder.inverse_transform([predicted_label])[0]
+    # Initialize scores
+    E, I = 0, 0
+    S, N = 0, 0
+    T, F = 0, 0
+    J, P = 0, 0
+
+    # Mapping questions to personality dimensions
+    questions = [
+        ('E', 'I'), ('E', 'I'), ('E', 'I'),
+        ('J', 'P'), ('S', 'N'), ('S', 'N'),
+        ('T', 'F'), ('T', 'F'), ('J', 'P'),
+        ('J', 'P')
+    ]
+        
+
+    # Assign scores based on user answers
+    for index, answer in enumerate(answers):
+        if answer == 'a':
+            globals()[questions[index][0]] += 1
+        elif answer == 'b':
+            globals()[questions[index][1]] += 1
+        else:
+            globals()[questions[index][0]] += randint(0, 1)
+
+    # Determine personality type
+    personality_type = f"{'E' if E > I else 'I'}{'S' if S > N else 'N'}{'T' if T > F else 'F'}{'J' if J > P else 'P'}"
     
-    # Find compatible personalities based on the predicted type
-    compatible_personalities = compatibility_matrix.get(predicted_type, [])
-    
-    return predicted_type, compatible_personalities
+    return personality_type
 
 def predict(request):
     if request.method == 'POST':
-        user_text = request.POST.get('description')
-        
-        if not user_text:
-            # Handle the case where user_text is None or empty
-            return HttpResponseBadRequest("Invalid input: user_text is required")
-        
-        # Call match_personality function
-        predicted_type, compatible_personalities = match_personality(
-            user_text, cat_model, tfidf_vectorizer, label_encoder, compatibility_matrix
-        )
+        # Extract answers from the form input (questions q1 to q10)
+        answers = [request.POST.get(f'q{i}') for i in range(1, 11)]
 
+        # Determine the personality type based on the answers
+        predicted_type = personality_quiz(answers)
+
+        # Get compatible personality types from the compatibility matrix
+        compatible_personalities = compatibility_matrix.get(predicted_type, [])
+
+        # Update the user's profile with the predicted personality type
         profile, created = Profile.objects.get_or_create(user=request.user)
-        
-        # Update the predicted_personality field
         profile.personality_type = predicted_type
         profile.save()
 
-            # Fetch other users with compatible personalities
+        # Find users with compatible personality types, excluding the current user
         compatible_users = Profile.objects.filter(personality_type__in=compatible_personalities).exclude(user=request.user)
 
-        # Render the result
+        # Render the result page with the predicted type, compatible personalities, and compatible users
         return render(request, 'result.html', {
             'predicted_type': predicted_type,
             'compatible_personalities': compatible_personalities,
             'compatible_users': compatible_users
         })
-    
-    return render(request, 'result.html')   
 
+    # Handle GET request or return empty form
+    return render(request, 'result.html')
