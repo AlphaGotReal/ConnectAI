@@ -1,28 +1,46 @@
-    {% extends 'main.html' %}
+{% extends 'main.html' %} {% block content %}
+<div class="container">
+  <!-- Introductory text -->
+  <div class="intro-text">
+    <p>
+      ConnectAI leverages reinforcement learning and natural language processing
+      (NLP) to facilitate meaningful connections based on the MBTI personality
+      types. The MBTI categorizes individuals into 16 personality types, such as
+      ISTJ, INFP, and ESTP, determined by preferences for Introversion (I) or
+      Extraversion (E), Sensing (S) or Intuition (N), Thinking (T) or Feeling
+      (F), and Judging (J) or Perceiving (P). Each type embodies distinct
+      traits—ISTJs are practical and reliable, INFPs are idealistic and
+      empathetic, ESTPs are energetic and adaptable—offering insights into how
+      individuals perceive, decide, and relate. This approach enhances
+      understanding and fosters effective communication across diverse
+      personalities, empowering ConnectAI to forge connections that are both
+      compatible and enriching.
+    </p>
+  </div>
 
-    {% block content %}
-        {% if request.user.is_authenticated %}
-        {% endif %}
-        <div class="container">
-            <!-- Introductory text -->
-            <div class="intro-text">
-                <p>ConnectAI leverages reinforcement learning and natural language processing (NLP) to facilitate meaningful connections based on the MBTI personality types. The MBTI categorizes individuals into 16 personality types, such as ISTJ, INFP, and ESTP, determined by preferences for Introversion (I) or Extraversion (E), Sensing (S) or Intuition (N), Thinking (T) or Feeling (F), and Judging (J) or Perceiving (P). Each type embodies distinct traits—ISTJs are practical and reliable, INFPs are idealistic and empathetic, ESTPs are energetic and adaptable—offering insights into how individuals perceive, decide, and relate. This approach enhances understanding and fosters effective communication across diverse personalities, empowering ConnectAI to forge connections that are both compatible and enriching.</p>
-            </div>
-
-            <!-- Features -->
-            <div class="features">
-                <div class="feature">
-                    <h3>Reinforcement Learning</h3>
-                    <p>Utilizing RL to optimize personality matching algorithms.</p>
-                </div>
-                <div class="feature">
-                    <h3>Natural Language Processing</h3>
-                    <p>Applying NLP techniques to analyze and understand personality traits.</p>
-                </div>
-                <div class="feature">
-                    <h3>MBTI Dataset</h3>
-                    <p>Using the MBTI dataset to categorize and match user personalities.</p>
-                </div>
-            </div>
-        </div>
-    {% endblock %}
+  <!-- Features -->
+  <div class="features">
+    <div class="feature">
+      <h3>Reinforcement Learning</h3>
+      <p>Utilizing RL to optimize personality matching algorithms.</p>
+    </div>
+    <div class="feature">
+      <h3>Natural Language Processing</h3>
+      <p>
+        Applying NLP techniques to analyze and understand personality traits.
+      </p>
+    </div>
+    <div class="feature">
+      <h3>MBTI Dataset</h3>
+      <p>Using the MBTI dataset to categorize and match user personalities.</p>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <a
+    class="btn btn-lg btn-primary shadow rounded-pill px-4 py-3"
+    href="{% url 'connect' %}"
+    >Connect Now!</a
+  >
+</div>
+{% endblock %}

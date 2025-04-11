@@ -15,6 +15,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
   </head>
@@ -26,11 +30,12 @@
         </div> -->
 
       {% include 'navbar.html' %} {% block content %} {% if messages %}
-      <ul class="messages list-unstyled">
+      <ul class="messages list-unstyled mt-6">
         {% for message in messages %}
         <li class="alert alert-info">{{ message }}</li>
         {% endfor %}
       </ul>
+
       {% endif %} {% endblock %}
     </div>
 
