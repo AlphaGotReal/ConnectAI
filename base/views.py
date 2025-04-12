@@ -66,14 +66,18 @@ def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Registration successful! Please log in.')
+            user = form.save()
+            messages.success(request, '✅ Registration successful! Please log in.')
             return redirect('login')
         else:
-            messages.error(request, 'There has been some error during registration, please try again!')
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"❌ {field.capitalize()}: {error}")
+            messages.error(request, '⚠️ There were errors in your registration form. Please correct them and try again.')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'login.html', {'form': form})
+
+    return render(request, 'login.html', {'form': form, 'page': 'register'})
 
 @login_required
 def profile(request):
@@ -119,11 +123,11 @@ def connect(request):
         profile, created = Profile.objects.get_or_create(user=request.user)
         if profile.personality_type:
             # Fetch compatible personalities
-            # compatible_personalities = compatibility_matrix.get(profile.personality_type, [])
+            compatible_personalities = compatibility_matrix.get(profile.personality_type, [])
             # Fetch other users with compatible personalities
-            # compatible_users = Profile.objects.filter(personality_type__in=compatible_personalities).exclude(user=request.user)
+            compatible_users = Profile.objects.filter(personality_type__in=compatible_personalities).exclude(user=request.user)
             # Render the connect page with compatible users
-            return render(request, 'connect.html', {'compatible_users': ["test"]})
+            return render(request, 'connect.html', {'compatible_users': compatible_users})
         else:
             # Redirect to personality test page if personality_type is not set
             return redirect('personality_test')
@@ -133,6 +137,7 @@ def connect(request):
     
 def personality_test(request):
     return render(request, 'personality_test.html', {}) 
+
 compatibility_matrix = {
     'INTJ': ['ENTP', 'INTP', 'ENTJ', 'INFJ'],
     'INTP': ['ENTJ', 'INTJ', 'ENTP', 'INFP'],
@@ -170,7 +175,6 @@ def personality_quiz(answers):
         ('J', 'P')
     ]
         
-
     # Assign scores based on user answers
     for index, answer in enumerate(answers):
         if answer == 'a':
