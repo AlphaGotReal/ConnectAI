@@ -1,5 +1,5 @@
-venv/
+env/
 base/__pycache__/
 connectai/__pycache__/
-
+base/migrations/__pycache__/
 
