@@ -12,6 +12,7 @@ urlpatterns = [
     path('result/', views.predict, name='predict_personality'),
     path('connect/', views.connect, name='connect'),
     path('personality-test/', views.personality_test, name='personality_test'),
+    path('chatroom/<str:room_name>/', views.chat_room, name='chat_room'),
     path('', views.landing, name='landing'),
     #path('logout/', views.logout, name='logout')
 ]

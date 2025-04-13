@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Map Error</title>
-</head>
-<body>
-    {% include 'navbar.html' %}
-    <div>
-        {% for room in rooms %}
-        <div>
-            <h5>Room Number: {{ room.name }}</h5>
-            <h5>Room Status: {{ room.status }}</h5>
-            <h5>Room Description: {{ room.description }}</h5>
-        </div>
-        {% endfor %}
-    </div>
-    <h1>This is an inaccessed part of the website</h1>
-    <p>Please go back lol</p>
-</body>
-</html>
+<button id="connect-ws">Connect to WebSocket</button>
+<pre id="log"></pre>
+
+<script>
+    const port = 9000; // Define the port
+    const roomName = "user1-user2"; // Replace with dynamic room name if needed
+    const host = window.location.hostname; // Get the current hostname
+    const protocol = window.location.protocol; // Get the current protocol (http or https)
+
+    // Construct the URL with the port
+    const chatRoomUrl = `${protocol}//${host}:${port}/chatroom/${roomName}/`;
+
+    // Redirect to the chat room
+    window.location.href = chatRoomUrl;
+</script>

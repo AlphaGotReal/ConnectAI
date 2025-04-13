@@ -217,3 +217,6 @@ def predict(request):
 
     # Handle GET request or return empty form
     return render(request, 'result.html')
+
+def chat_room(request, room_name):
+    return render(request, 'chat_room.html', {'room_name': room_name})
