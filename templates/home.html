@@ -1,141 +1,96 @@
-{% extends 'main.html' %} {% load static %} {% block content %}
-<div class="container home-container">
-  <!-- Hero Section -->
-  <div class="hero-section">
-    <h1 class="gradient-text">Find Your Perfect Connection</h1>
-    <p class="subtitle">
-      Discover relationships that truly resonate with your personality
-    </p>
+{% extends 'main.html' %}
 
-    <div class="cta-buttons">
-      <a class="btn-primary-custom" href="{% url 'connect' %}">
-        <i class="fas fa-link"></i> Connect Now
-      </a>
-      <a class="btn-secondary-custom" href="#">
-        <i class="fas fa-info-circle"></i> Learn More
-      </a>
-    </div>
-  </div>
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-h3ryFjLOsc/1XPyF7kr0BmSqZfUsW5E96leajBt4aFt07tS+JH6Pu75PYz6yimPcYIF5XNzgAnQbZmFcHQ3e1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- How It Works -->
-  <div class="section-container">
-    <h2 class="section-title">How ConnectAI Works</h2>
-    <div class="process-steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Share Your Personality</h3>
-        <p>
-          Take our MBTI assessment or upload your results to help us understand
-          your unique traits.
-        </p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>AI-Powered Matching</h3>
-        <p>
-          Our algorithms analyze compatibility factors to find your ideal
-          connections.
-        </p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Connect Meaningfully</h3>
-        <p>
-          Engage with matches who complement your personality and communication
-          style.
-        </p>
-      </div>
-    </div>
-  </div>
+<style>
+    body {
+        background-color: #f2f6fc;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 
-  <!-- Technology Section -->
-  <div class="section-container tech-section">
-    <h2 class="section-title">Our Technology</h2>
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon"><i class="fas fa-brain"></i></div>
-        <h3>Reinforcement Learning</h3>
-        <p>
-          Our algorithms continuously improve, learning from successful
-          connections to optimize future matches.
-        </p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon"><i class="fas fa-comment-dots"></i></div>
-        <h3>Natural Language Processing</h3>
-        <p>
-          We analyze communication patterns to understand personality traits and
-          preferences.
-        </p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
-        <h3>MBTI Framework</h3>
-        <p>
-          Leveraging the trusted 16-personality system to create meaningful
-          compatibility profiles.
-        </p>
-      </div>
-    </div>
-  </div>
+    .result-container {
+        background: #fff;
+        border-radius: 12px;
+        padding: 30px;
+        max-width: 700px;
+        margin: 50px auto;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
 
-  <!-- Testimonials -->
-  <div class="section-container testimonial-section">
-    <h2 class="section-title">What Our Users Say</h2>
-    <div class="testimonials">
-      <div class="testimonial">
-        <div class="testimonial-content">
-          <p>
-            "ConnectAI helped me find friends who truly understand my INFJ
-            perspective. Finally, people who get me!"
-          </p>
-        </div>
-        <div class="testimonial-author">
-          <img
-            src="{% static 'logo.jpg' %}"
-            alt="User"
-            class="testimonial-avatar"
-            onerror="this.src='https://via.placeholder.com/50'"
-          />
-          <div class="author-info">
-            <h4>Sarah T.</h4>
-            <p>INFJ</p>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-content">
-          <p>
-            "As an ENTJ, finding people who match my energy has been
-            game-changing for my social and professional life."
-          </p>
-        </div>
-        <div class="testimonial-author">
-          <img
-            src="{% static 'logo.jpg' %}"
-            alt="User"
-            class="testimonial-avatar"
-            onerror="this.src='https://via.placeholder.com/50'"
-          />
-          <div class="author-info">
-            <h4>Michael K.</h4>
-            <p>ENTJ</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    .result-container h2 {
+        margin-bottom: 20px;
+        font-size: 28px;
+        color: #333;
+    }
 
-  <!-- Final CTA -->
-  <div class="final-cta">
-    <h2>Ready to find your personality match?</h2>
-    <p>
-      Join thousands of users who've found meaningful connections through
-      ConnectAI
-    </p>
-    <a class="btn-cta" href="{% url 'connect' %}">
-      <i class="fas fa-rocket"></i> Get Started Now
-    </a>
-  </div>
+    .result-container p {
+        font-size: 16px;
+        color: #555;
+        margin: 10px 0;
+    }
+
+    .result-container strong {
+        color: #007bff;
+    }
+
+    .result-container ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    .result-container li {
+        background: #f7f9fc;
+        margin: 8px auto;
+        padding: 12px 18px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        font-size: 15px;
+    }
+
+    .btn-back {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-back:hover {
+        background-color: #333;
+    }
+</style>
+
+<div class="result-container">
+    <h2><i class="fas fa-user-friends"></i> Connected Users</h2>
+    
+    {% if predicted_type %}
+        <p>Your predicted personality type is: <strong>{{ predicted_type }}</strong></p>
+        <p>Compatible personalities: <strong>{{ compatible_personalities }}</strong></p>
+    {% else %}
+        <p>No prediction available.</p>
+    {% endif %}
+
+    <h3 style="color: black;">Compatible Users:</h3>
+    <ul style="color: black;">
+        {% for user in compatible_users %}
+            <li>
+                <i style="color: black;" class="fas fa-user"></i>
+                {{ user.user.username }} – <strong style="color: black;">{{ user.personality_type }}</strong>
+            </li>
+        {% empty %}
+            <h5 style="color: black;">No compatible users found.</h5>
+        {% endfor %}
+    </ul> 
+
+    <a href="{% url 'connect' %}" class="btn-back"><i class="fas fa-arrow-right"></i>Chat With Your Friends!</a>
 </div>
+
 {% endblock %}

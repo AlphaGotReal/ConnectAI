@@ -28,7 +28,19 @@ from .forms import CustomUserCreationForm, EditProfileForm, PasswordChangingForm
 from django.http import HttpResponseBadRequest
 
 def home(request):
-    return render(request, 'home.html')
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    personality_type = profile.personality_type
+
+    compatible_personalities = compatibility_matrix.get(profile.personality_type, [])
+
+    compatible_users = Profile.objects.filter(personality_type__in=compatible_personalities).exclude(user=request.user)
+
+    return render(request, 'home.html', {
+        'predicted_type': personality_type,
+        'compatible_personalities': compatible_personalities,
+        'compatible_users': compatible_users
+    })
 
 def landing(request):
     return render(request, 'landing.html')
