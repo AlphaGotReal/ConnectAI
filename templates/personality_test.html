@@ -1,129 +1,376 @@
 {% extends 'main.html' %} {% block content %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  integrity="sha512-h3ryFjLOsc/1XPyF7kr0BmSqZfUsW5E96leajBt4aFt07tS+JH6Pu75PYz6yimPcYIF5XNzgAnQbZmFcHQ3e1g=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+<div class="personality-test-container">
+  <div class="test-card">
+    <div class="test-header">
+      <h2>Discover Your Personality Type</h2>
+      <p>Answer these questions to find your perfect connections</p>
+    </div>
 
-<div class="container mt-5 mb-5">
-  <div class="card shadow-lg p-4 bg-dark">
-    <h2 class="text-center mb-4">🧠 Personality Test</h2>
-    <form method="POST" action="{% url 'predict_personality' %}">
+    <form
+      method="POST"
+      action="{% url 'predict_personality' %}"
+      class="personality-form"
+    >
       {% csrf_token %}
 
-      <!-- Question 1 -->
-      <label for="question_1">When making decisions, you tend to:</label><br />
-      <input type="radio" id="question_1_option_a" name="q1" value="a" />
-      <label for="question_1_option_a"
-        >Rely on logic and objective analysis</label
-      ><br />
-      <input type="radio" id="question_1_option_b" name="q1" value="b" />
-      <label for="question_1_option_b"
-        >Consider personal feelings and the impact on others</label
-      ><br /><br />
+      <div class="question-container">
+        <!-- Question 1 -->
+        <div class="test-question">
+          <h3>When making decisions, you tend to:</h3>
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                id="question_1_option_a"
+                name="q1"
+                value="a"
+                class="custom-radio"
+                required
+              />
+              <label for="question_1_option_a">
+                <span class="radio-circle"></span>
+                <span>Rely on logic and objective analysis</span>
+              </label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="question_1_option_b"
+                name="q1"
+                value="b"
+                class="custom-radio"
+              />
+              <label for="question_1_option_b">
+                <span class="radio-circle"></span>
+                <span>Consider personal feelings and the impact on others</span>
+              </label>
+            </div>
+          </div>
+        </div>
 
-      <!-- Question 2 -->
-      <label for="question_2">In social situations, you prefer:</label><br />
-      <input type="radio" id="question_2_option_a" name="q2" value="a" />
-      <label for="question_2_option_a"
-        >Engage in group activities and discussions</label
-      ><br />
-      <input type="radio" id="question_2_option_b" name="q2" value="b" />
-      <label for="question_2_option_b"
-        >Spend time alone or with a close friend</label
-      ><br /><br />
+        <!-- Question 2 -->
+        <div class="test-question">
+          <h3>In social situations, you prefer:</h3>
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                id="question_2_option_a"
+                name="q2"
+                value="a"
+                class="custom-radio"
+                required
+              />
+              <label for="question_2_option_a">
+                <span class="radio-circle"></span>
+                <span>Engage in group activities and discussions</span>
+              </label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="question_2_option_b"
+                name="q2"
+                value="b"
+                class="custom-radio"
+              />
+              <label for="question_2_option_b">
+                <span class="radio-circle"></span>
+                <span>Spend time alone or with a close friend</span>
+              </label>
+            </div>
+          </div>
+        </div>
 
-      <!-- Question 3 -->
-      <label for="question_3">You are more energized by:</label><br />
-      <input type="radio" id="question_3_option_a" name="q3" value="a" />
-      <label for="question_3_option_a"
-        >Interacting with people and being in the spotlight</label
-      ><br />
-      <input type="radio" id="question_3_option_b" name="q3" value="b" />
-      <label for="question_3_option_b"
-        >Spending time alone or in quiet environments</label
-      ><br /><br />
+        <!-- Question 3 -->
+        <div class="test-question">
+          <h3>You are more energized by:</h3>
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                id="question_3_option_a"
+                name="q3"
+                value="a"
+                class="custom-radio"
+                required
+              />
+              <label for="question_3_option_a">
+                <span class="radio-circle"></span>
+                <span>Interacting with people and being in the spotlight</span>
+              </label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="question_3_option_b"
+                name="q3"
+                value="b"
+                class="custom-radio"
+              />
+              <label for="question_3_option_b">
+                <span class="radio-circle"></span>
+                <span>Spending time alone or in quiet environments</span>
+              </label>
+            </div>
+          </div>
+        </div>
 
-      <!-- Question 4 -->
-      <label for="question_4">When it comes to planning, you prefer:</label
-      ><br />
-      <input type="radio" id="question_4_option_a" name="q4" value="a" />
-      <label for="question_4_option_a"
-        >Having a detailed plan and sticking to it</label
-      ><br />
-      <input type="radio" id="question_4_option_b" name="q4" value="b" />
-      <label for="question_4_option_b"
-        >Being flexible and going with the flow</label
-      ><br /><br />
+        <!-- Question 4 -->
+        <div class="test-question">
+          <h3>When it comes to planning, you prefer:</h3>
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                id="question_4_option_a"
+                name="q4"
+                value="a"
+                class="custom-radio"
+                required
+              />
+              <label for="question_4_option_a">
+                <span class="radio-circle"></span>
+                <span>Having a detailed plan and sticking to it</span>
+              </label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="question_4_option_b"
+                name="q4"
+                value="b"
+                class="custom-radio"
+              />
+              <label for="question_4_option_b">
+                <span class="radio-circle"></span>
+                <span>Being flexible and going with the flow</span>
+              </label>
+            </div>
+          </div>
+        </div>
 
-      <!-- Question 5 -->
-      <label for="question_5">In your work style, you tend to:</label><br />
-      <input type="radio" id="question_5_option_a" name="q5" value="a" />
-      <label for="question_5_option_a"
-        >Focus on tasks and get them done efficiently</label
-      ><br />
-      <input type="radio" id="question_5_option_b" name="q5" value="b" />
-      <label for="question_5_option_b"
-        >Consider the bigger picture and how tasks fit into it</label
-      ><br /><br />
+        <!-- Question 5 -->
+        <div class="test-question">
+          <h3>In your work style, you tend to:</h3>
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                id="question_5_option_a"
+                name="q5"
+                value="a"
+                class="custom-radio"
+                required
+              />
+              <label for="question_5_option_a">
+                <span class="radio-circle"></span>
+                <span>Focus on tasks and get them done efficiently</span>
+              </label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="question_5_option_b"
+                name="q5"
+                value="b"
+                class="custom-radio"
+              />
+              <label for="question_5_option_b">
+                <span class="radio-circle"></span>
+                <span
+                  >Consider the bigger picture and how tasks fit into it</span
+                >
+              </label>
+            </div>
+          </div>
+        </div>
 
-      <!-- Question 6 -->
-      <label for="question_6">You are more comfortable with:</label><br />
-      <input type="radio" id="question_6_option_a" name="q6" value="a" />
-      <label for="question_6_option_a">Concrete facts and data</label><br />
-      <input type="radio" id="question_6_option_b" name="q6" value="b" />
-      <label for="question_6_option_b">Abstract ideas and concepts</label
-      ><br /><br />
+        <!-- Question 6 -->
+        <div class="test-question">
+          <h3>You are more comfortable with:</h3>
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                id="question_6_option_a"
+                name="q6"
+                value="a"
+                class="custom-radio"
+                required
+              />
+              <label for="question_6_option_a">
+                <span class="radio-circle"></span>
+                <span>Concrete facts and data</span>
+              </label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="question_6_option_b"
+                name="q6"
+                value="b"
+                class="custom-radio"
+              />
+              <label for="question_6_option_b">
+                <span class="radio-circle"></span>
+                <span>Abstract ideas and concepts</span>
+              </label>
+            </div>
+          </div>
+        </div>
 
-      <!-- Question 7 -->
-      <label for="question_7">When faced with a problem, you usually:</label
-      ><br />
-      <input type="radio" id="question_7_option_a" name="q7" value="a" />
-      <label for="question_7_option_a">Analyze the situation logically</label
-      ><br />
-      <input type="radio" id="question_7_option_b" name="q7" value="b" />
-      <label for="question_7_option_b"
-        >Trust your intuition and gut feelings</label
-      ><br /><br />
+        <!-- Question 7 -->
+        <div class="test-question">
+          <h3>When faced with a problem, you usually:</h3>
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                id="question_7_option_a"
+                name="q7"
+                value="a"
+                class="custom-radio"
+                required
+              />
+              <label for="question_7_option_a">
+                <span class="radio-circle"></span>
+                <span>Analyze the situation logically</span>
+              </label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="question_7_option_b"
+                name="q7"
+                value="b"
+                class="custom-radio"
+              />
+              <label for="question_7_option_b">
+                <span class="radio-circle"></span>
+                <span>Trust your intuition and gut feelings</span>
+              </label>
+            </div>
+          </div>
+        </div>
 
-      <!-- Question 8 -->
-      <label for="question_8">In conversations, you prefer:</label><br />
-      <input type="radio" id="question_8_option_a" name="q8" value="a" />
-      <label for="question_8_option_a">Discussing ideas and theories</label
-      ><br />
-      <input type="radio" id="question_8_option_b" name="q8" value="b" />
-      <label for="question_8_option_b"
-        >Talking about personal experiences and feelings</label
-      ><br /><br />
+        <!-- Question 8 -->
+        <div class="test-question">
+          <h3>In conversations, you prefer:</h3>
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                id="question_8_option_a"
+                name="q8"
+                value="a"
+                class="custom-radio"
+                required
+              />
+              <label for="question_8_option_a">
+                <span class="radio-circle"></span>
+                <span>Discussing ideas and theories</span>
+              </label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="question_8_option_b"
+                name="q8"
+                value="b"
+                class="custom-radio"
+              />
+              <label for="question_8_option_b">
+                <span class="radio-circle"></span>
+                <span>Talking about personal experiences and feelings</span>
+              </label>
+            </div>
+          </div>
+        </div>
 
-      <!-- Question 9 -->
-      <label for="question_9">You tend to be:</label><br />
-      <input type="radio" id="question_9_option_a" name="q9" value="a" />
-      <label for="question_9_option_a">Organized and methodical</label><br />
-      <input type="radio" id="question_9_option_b" name="q9" value="b" />
-      <label for="question_9_option_b">Spontaneous and adaptable</label
-      ><br /><br />
+        <!-- Question 9 -->
+        <div class="test-question">
+          <h3>You tend to be:</h3>
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                id="question_9_option_a"
+                name="q9"
+                value="a"
+                class="custom-radio"
+                required
+              />
+              <label for="question_9_option_a">
+                <span class="radio-circle"></span>
+                <span>Organized and methodical</span>
+              </label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="question_9_option_b"
+                name="q9"
+                value="b"
+                class="custom-radio"
+              />
+              <label for="question_9_option_b">
+                <span class="radio-circle"></span>
+                <span>Spontaneous and adaptable</span>
+              </label>
+            </div>
+          </div>
+        </div>
 
-      <!-- Question 10 -->
-      <label for="question_10">When working in a team, you prefer:</label><br />
-      <input type="radio" id="question_10_option_a" name="q10" value="a" />
-      <label for="question_10_option_a"
-        >Clearly defined roles and responsibilities</label
-      ><br />
-      <input type="radio" id="question_10_option_b" name="q10" value="b" />
-      <label for="question_10_option_b"
-        >A collaborative and flexible approach</label
-      ><br /><br />
+        <!-- Question 10 -->
+        <div class="test-question">
+          <h3>When working in a team, you prefer:</h3>
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                id="question_10_option_a"
+                name="q10"
+                value="a"
+                class="custom-radio"
+                required
+              />
+              <label for="question_10_option_a">
+                <span class="radio-circle"></span>
+                <span>Clearly defined roles and responsibilities</span>
+              </label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="question_10_option_b"
+                name="q10"
+                value="b"
+                class="custom-radio"
+              />
+              <label for="question_10_option_b">
+                <span class="radio-circle"></span>
+                <span>A collaborative and flexible approach</span>
+              </label>
+            </div>
+          </div>
+        </div>
 
-      <!-- Submit Button -->
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill">
-          Submit Test
-        </button>
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <button type="submit" class="btn-submit">
+            <i class="fas fa-brain"></i> Analyze My Personality
+          </button>
+        </div>
       </div>
     </form>
+
+    <div class="test-footer">
+      <p>
+        Your results will help us find connections that truly match your
+        personality type
+      </p>
+    </div>
   </div>
 </div>
 {% endblock %}
