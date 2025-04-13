@@ -1382,3 +1382,20 @@ textarea {
   box-shadow: 0 0 0 3px rgba(188, 60, 216, 0.2);
   outline: none;
 }
+
+body, html {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+body::after, body::before,
+html::after, html::before {
+  display: none !important;
+  content: none !important;
+}
+
+.container-custom {
+  min-height: 100vh;
+  margin-bottom: -1px !important; /* Counteracts any hidden spacing */
+}
