@@ -1,17 +1,104 @@
-    {% extends 'main.html' %}
+{% extends 'main.html' %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-    {% block content %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-h3ryFjLOsc/1XPyF7kr0BmSqZfUsW5E96leajBt4aFt07tS+JH6Pu75PYz6yimPcYIF5XNzgAnQbZmFcHQ3e1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <div>
-        <h3>Compatible Users:</h3>
-        <ul>
-            {% for user in compatible_users %}
-                <li>{{ user.user.username }} - {{ user.personality_type }}</li>
-            {% empty %}
-                <h5>No compatible users found.</h5>
-            {% endfor %}
-        </ul>
-    </div>
+<style>
+    .profile-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-    <a href="{% url 'personality_test' %}">Click here to do the personality test again</a>
-    {% endblock %}
+    .profile-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.2s ease;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .profile-avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border: 2px solid #007bff;
+    }
+
+    .profile-name {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 6px;
+        color: #111;
+    }
+
+    .profile-type {
+        font-size: 14px;
+        font-weight: 600;
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+
+    .profile-line {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .no-users {
+        text-align: center;
+        font-size: 16px;
+        color: #777;
+        margin-top: 20px;
+    }
+
+    .retake-link {
+        display: block;
+        width: fit-content;
+        margin: 40px auto 0;
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: background 0.3s ease;
+    }
+
+    .retake-link:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="profile-container">
+    {% for user in compatible_users %}
+        <div class="profile-card">
+            <img 
+                src="{{ user.avatar|default:'/static/images/default-avatar.png' }}" 
+                alt="Avatar" 
+                class="profile-avatar"
+                onerror="this.onerror=null;this.src='/static/images/default-avatar.png';"
+            >
+            <div class="profile-name">{{ user.user.username }}</div>
+            <div class="profile-type">{{ user.personality_type }}</div>
+            {% if user.catchy_line %}
+                <div class="profile-line"><i class="fas fa-quote-left"></i> {{ user.catchy_line }}</div>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p class="no-users">No compatible users found.</p>
+    {% endfor %}
+</div>
+
+<a href="{% url 'personality_test' %}" class="retake-link">
+    <i class="fas fa-redo-alt"></i> Retake Personality Test
+</a>
+{% endblock %}
