@@ -1,27 +1,76 @@
-{% extends 'main.html' %}
-
-{% block content %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-h3ryFjLOsc/1XPyF7kr0BmSqZfUsW5E96leajBt4aFt07tS+JH6Pu75PYz6yimPcYIF5XNzgAnQbZmFcHQ3e1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+{% extends 'main.html' %} {% block content %}
 <div class="result-container">
-    <h2>Prediction Result</h2>
-    {% if predicted_type %}
-        <p>Your predicted personality type is: <strong>{{ predicted_type }}</strong></p>
-        <p>Compatible personalities: <strong>{{ compatible_personalities }}</strong></p>
-    {% else %}
-        <p>No prediction available.</p>
-    {% endif %}
+  <div class="result-card">
+    <div class="result-header">
+      <i class="fas fa-brain result-icon"></i>
+      <h2>Your Personality Analysis</h2>
+      <p>Here's what we discovered about you</p>
+    </div>
 
-    <h3>Compatible Users:</h3>
-    <ul>
-        {% for user in compatible_users %}
-            <li>{{ user.user.username }} - {{ user.personality_type }}</li>
-        {% empty %}
-            <h5>No compatible users found.</h5>
-        {% endfor %}
-    </ul>
+    <div class="result-content">
+      <div class="personality-section">
+        {% if predicted_type %}
+        <div class="personality-type">
+          <h3>Your Personality Type</h3>
+          <div class="type-badge">{{ predicted_type }}</div>
+        </div>
 
-    <a href="{% url 'connect' %}" class="btn-back">Go to Connect</a>
+        <div class="compatibility-section">
+          <h3>Compatibility Match</h3>
+          <p>You're most compatible with:</p>
+          <div class="compatible-types">
+            {% for type in compatible_personalities.split|slice:":3" %}
+            <span class="compatible-badge">{{ type }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% else %}
+        <div class="no-result">
+          <i class="fas fa-exclamation-circle"></i>
+          <p>No prediction available. Try taking the test again.</p>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="matches-section">
+        <h3><i class="fas fa-user-friends"></i> Your Compatible Matches</h3>
+
+        {% if compatible_users %}
+        <div class="compatible-users">
+          {% for user in compatible_users %}
+          <div class="user-match">
+            <div class="user-avatar">
+              {% if user.avatar %}
+              <img src="{{ user.avatar.url }}" alt="{{ user.user.username }}" />
+              {% else %}
+              <i class="fas fa-user"></i>
+              {% endif %}
+            </div>
+            <div class="user-match-info">
+              <h4>{{ user.user.username }}</h4>
+              <span class="user-match-type">{{ user.personality_type }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-matches">
+          <i class="fas fa-search"></i>
+          <p>No compatible users found at the moment.</p>
+          <p class="small">Check back later as more users join!</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="result-actions">
+      <a href="{% url 'connect' %}" class="btn-connect">
+        <i class="fas fa-comments"></i> Start Chatting
+      </a>
+      <a href="{% url 'personality_test' %}" class="btn-retest">
+        <i class="fas fa-redo"></i> Retake Test
+      </a>
+    </div>
+  </div>
 </div>
-
 {% endblock %}

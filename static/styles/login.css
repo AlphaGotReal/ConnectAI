@@ -1,238 +1,394 @@
-/* Specific body styles */
-body {
-  background-image: url("/static/background.jpg");
-  background-size: cover; /* Cover the entire viewport */
-  background-repeat: no-repeat; /* Prevent image from repeating */
-  background-position: center;
-  background-color: #222121; /* Dark background color */
-  color: #f0f4f8; /* Light text color */
-  font-family: "Roboto", "Times New Roman", Times, serif;
+/* Modern Authentication Design */
+:root {
+  --primary-color: #bc3cd8;
+  --primary-dark: #8f2ca6;
+  --primary-light: rgba(188, 60, 216, 0.1);
+  --secondary-color: #c54b8c;
+  --dark-bg: #10141e;
+  --card-bg: #161b22;
+  --input-bg: #0d1117;
+  --border-color: #30363d;
+  --text-color: #c9d1d9;
+  --text-muted: #8b949e;
+  --error-color: #f85149;
+}
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-color);
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Minimum height instead of fixed height */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height */
+  overflow-y: auto; /* Allow scrolling */
 }
 
-.container {
-  width: 360px;
-  max-width: 100%;
-  height: 80vh; /* 🔥 Limit height so content doesn't overflow */
-  overflow-y: hidden; /* 🔥 Allow scrolling inside container */
-  padding: 40px;
-  background-color: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(27, 31, 35, 0.12),
-    0 8px 24px rgba(27, 31, 35, 0.12);
-  text-align: center;
+/* Background with gradient overlay */
+.auth-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/static/background.jpg") center center/cover no-repeat;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.auth-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(16, 20, 30, 0.9) 0%,
+    rgba(16, 20, 30, 0.7) 100%
+  );
+}
+
+/* Content container */
+.auth-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-}
-
-.btn-primary {
-  background-color: #bc3cd8; /* Blue background color */
-  color: #fff; /* White text color */
-  padding: 12px 24px; /* Padding inside the button */
-  border: none; /* Remove border */
-  border-radius: 6px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  display: inline-flex; /* Inline flex for icon alignment */
-  align-items: center; /* Center align icon and text vertically */
-  font-size: 16px; /* Font size */
-}
-
-.btn-primary i {
-  margin-right: 8px; /* Space between icon and text */
-}
-
-.btn-primary:hover {
-  background-color: #8f2ca6; /* Darker blue on hover */
-}
-
-.mt-3 {
-  margin-top: 16px; /* Top margin */
-}
-
-/* Brand name styles */
-.brand-name {
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 30vh; /* Full viewport height to center vertically */
-  text-align: center;
-  padding: 0; /* Remove any padding */
-  margin: 0; /* Remove any margin */
+  justify-content: flex-start; /* Change to flex-start to allow natural flow */
+  min-height: 100%; /* Ensure it takes up the full height */
+  overflow-y: auto; /* Allow vertical scrolling if needed */
+}
+
+/* Auth header with logo */
+.auth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 .brand-logo {
-  max-width: 200px; /* Adjust as needed for smaller size */
-  height: 200px; /* Maintain aspect ratio */
-  margin: 0; /* Center the image horizontally */
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 0 20px rgba(188, 60, 216, 0.3);
 }
 
-/* Heading styles */
-h1 {
-  color: #c9d1d9;
+.brand-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  background: linear-gradient(
+    134deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+/* Authentication card */
+.auth-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 420px;
+  padding: 35px;
+  border: 1px solid rgba(188, 60, 216, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: visible; /* Change from hidden to visible */
+  margin-bottom: 30px; /* Add some bottom margin */
+}
+
+.register-card {
+  max-width: 520px;
+}
+
+.auth-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Card header */
+.auth-card-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.auth-card-header h2 {
   font-size: 24px;
-  font-weight: 400;
-  margin-bottom: 24px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
 }
 
-/* Label styles */
-label {
-  display: block;
-  margin-bottom: 8px;
-  color: #c9d1d9;
-  text-align: left;
+.auth-card-header h2 i {
+  color: var(--primary-color);
+  margin-right: 8px;
 }
 
-/* Input styles */
-input[type="text"],
-input[type="password"] {
+.auth-card-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Form styling */
+.auth-form {
   width: 100%;
-  padding: 10px;
+}
+
+.form-group {
   margin-bottom: 20px;
-  border: 1px solid #30363d;
-  border-radius: 6px;
-  background-color: #0d1117;
-  color: #c9d1d9;
-  box-sizing: border-box;
-  font-size: 14px;
 }
 
-/* Submit button styles */
-input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: #3498db;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 6px;
-  color: #ffffff;
+.form-group label {
+  display: block;
   font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon i {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.input-with-icon input,
+.input-with-icon textarea,
+.input-with-icon select {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-with-icon textarea {
+  min-height: 80px;
+}
+
+.input-with-icon input:focus,
+.input-with-icon textarea:focus,
+.input-with-icon select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(188, 60, 216, 0.15);
+}
+
+/* File upload styling */
+.file-upload-wrapper {
+  position: relative;
+}
+
+.file-upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  background: linear-gradient(
+    134deg,
+    rgba(188, 60, 216, 0.1) 0%,
+    rgba(197, 75, 140, 0.1) 100%
+  );
+  border: 1px dashed var(--primary-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  text-align: center;
+}
+
+.file-upload-label:hover {
+  background: linear-gradient(
+    134deg,
+    rgba(188, 60, 216, 0.2) 0%,
+    rgba(197, 75, 140, 0.2) 100%
+  );
+}
+
+.file-upload-label i {
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Button styling */
+.btn-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(
+    134deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-input[type="submit"]:hover {
-  background-color: #2e5ca0;
-}
-
-/* Paragraph styles */
-p {
-  text-align: center;
-  color: #8b949e;
-}
-
-/* Anchor link styles */
-a {
-  color: #bc3cd8;
-  text-decoration: none;
-  display: block;
-  text-align: center;
+  transition: all 0.3s ease;
   margin-top: 10px;
 }
 
-a:hover {
+.btn-auth:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 15px rgba(188, 60, 216, 0.3);
+  filter: brightness(110%);
+}
+
+/* Footer styling */
+.auth-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.auth-footer p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.auth-link {
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.auth-link:hover {
+  color: var(--secondary-color);
   text-decoration: underline;
 }
 
-/* Messages styles */
+/* Error message styling */
+.error-message {
+  color: var(--error-color);
+  font-size: 13px;
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
 .messages {
-  background-color: #da3633;
-  color: white;
-  padding: 10px;
+  width: 100%;
+  max-width: 420px;
   margin-bottom: 20px;
-  border-radius: 4px;
-  text-align: center;
+  position: relative; /* Ensure proper positioning */
 }
 
-/* Form group styles */
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-container {
-  height: 100%;
-  max-height: 40vh; /* 🔥 Adjust based on how tall you want the scroll area */
-  overflow-y: auto; /* 🔥 Scrollable only if needed */
-  padding: 20px;
-  background-color: #161b22;
+.alert {
+  padding: 12px 15px;
   border-radius: 8px;
-  color: #c9d1d9;
-  border: 1px solid #30363d;
-  box-shadow: 0 4px 8px rgba(27, 31, 35, 0.2), 0 16px 32px rgba(27, 31, 35, 0.2);
-}
-
-/* Outer container styles */
-.outer-container {
-  width: 100%;
-  max-width: 1000px; /* Set a wider width for the outer container */
-  margin: 0 auto;
-  overflow: auto; /* Add scroll bar if necessary */
-}
-
-/* Heading 2 styles */
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Form group label styles */
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  color: #c9d1d9;
-  text-align: left;
-}
-
-/* Form group input, select, textarea styles */
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #30363d;
-  border-radius: 6px;
-  background-color: #0d1117;
-  color: #c9d1d9;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-/* Avatar input styles */
-input[type="file"] {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #30363d;
-  border-radius: 6px;
-  background-color: #bc3cd8;
-  color: #c9d1d9;
-}
-
-/* Register button styles */
-.btn-register {
-  background-color: #bc3cd8;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 100%;
+  background-color: var(--error-color);
+  color: white;
   text-align: center;
   font-size: 14px;
-  font-weight: 600;
-  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(248, 81, 73, 0.2);
 }
 
-.btn-register:hover {
-  background-color: #8f2ca6;
+/* Responsive design */
+@media (max-width: 576px) {
+  .auth-card {
+    padding: 25px;
+  }
+
+  .brand-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .brand-name {
+    font-size: 24px;
+  }
 }
 
-/* Multi-line placeholder styling */
-.form-group textarea::placeholder {
-  white-space: pre-line; /* Preserve line breaks */
+/* Add scrolling to the registration card */
+.register-card {
+  max-width: 520px;
+  max-height: 80vh; /* Limit height to 80% of viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Add some styling to the scrollbar for better appearance */
+.register-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.register-card::-webkit-scrollbar-track {
+  background: rgba(22, 27, 34, 0.5);
+  border-radius: 10px;
+}
+
+.register-card::-webkit-scrollbar-thumb {
+  background: rgba(188, 60, 216, 0.5);
+  border-radius: 10px;
+}
+
+.register-card::-webkit-scrollbar-thumb:hover {
+  background: rgba(188, 60, 216, 0.8);
+}
+
+/* Ensure the auth-container can accommodate different screen heights */
+.auth-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  overflow-y: auto; /* Important: Allow vertical scrolling */
+  padding: 20px 0;
 }
