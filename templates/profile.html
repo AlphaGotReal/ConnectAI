@@ -1,21 +1,64 @@
-{% extends 'main.html' %}
-
-{% block content %}
+{% extends 'main.html' %} {% block content %}
 <div class="profile-container">
+  <div class="profile-header">
     <h2>User Profile</h2>
-    <div class="profile-info">
-        {% if profile.avatar %}
-            <img src="{{ profile.avatar.url }}" alt="Avatar" class="profile_avatar">
-        {% else %}
-            <p>No avatar uploaded.</p>
-        {% endif %}
-        <p><strong>Personality:</strong> {{ profile.personality_type  }}</p>
-        <p><strong>Username:</strong> {{ profile.user.username }}</p>
-        <p><strong>Email:</strong> {{ profile.user.email }}</p>
-        <p><strong>Catchy Line:</strong> {{ profile.catchy_line }}</p>
-        <!-- Add other profile fields as needed -->
-        <button onclick="window.location.href='{% url 'edit_profile' %}'" class="btn-edit">Edit Profile</button>
-        <button onclick="window.location.href='{% url 'change_password' %}'" class="btn-change-password">Change Password</button>
+    <div class="profile-actions">
+      <button
+        onclick="window.location.href='{% url 'edit_profile' %}'"
+        class="btn-edit"
+      >
+        <i class="fas fa-edit"></i> Edit Profile
+      </button>
+      <button
+        onclick="window.location.href='{% url 'change_password' %}'"
+        class="btn-change-password"
+      >
+        <i class="fas fa-key"></i> Change Password
+      </button>
     </div>
+  </div>
+
+  <div class="profile-content">
+    <div class="profile-avatar-section">
+      {% if profile.avatar %}
+      <img src="{{ profile.avatar.url }}" alt="Avatar" class="profile_avatar" />
+      {% else %}
+      <div class="profile-avatar-placeholder">
+        <i class="fas fa-user"></i>
+        <p>No avatar uploaded</p>
+      </div>
+      {% endif %} {% if profile.catchy_line %}
+      <div class="profile-quote">
+        <i class="fas fa-quote-left quote-icon"></i>
+        <p>{{ profile.catchy_line }}</p>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="profile-details">
+      <div class="profile-detail-item">
+        <div class="detail-label">Username</div>
+        <div class="detail-value">{{ profile.user.username }}</div>
+      </div>
+
+      <div class="profile-detail-item">
+        <div class="detail-label">Email</div>
+        <div class="detail-value">{{ profile.user.email }}</div>
+      </div>
+
+      <div class="profile-detail-item">
+        <div class="detail-label">Personality</div>
+        <div class="detail-value">{{ profile.personality_type }}</div>
+      </div>
+
+      <!-- Add other profile fields as needed -->
+    </div>
+  </div>
 </div>
+
+<!-- Add this at the end of your profile.html template -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
 {% endblock %}
