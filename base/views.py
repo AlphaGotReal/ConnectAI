@@ -231,10 +231,13 @@ def predict(request):
     return render(request, 'result.html')
 
 @login_required
-#doesnt work
 def chat_room(request, room_name):
-    users_in_room = room_name.split('-')
-    if request.user.username not in users_in_room:
+    try:
+        user1, user2 = room_name.split("-")
+    except ValueError:
+        return HttpResponseForbidden("Invalid room name format.")
+
+    if request.user.username not in [user1, user2]:
         return HttpResponseForbidden("You are not authorized to join this chatroom.")
-    
-    return render(request, 'chatroom.html', {'room_name': room_name})
+
+    return render(request, "chat_room.html", {"room_name": room_name})

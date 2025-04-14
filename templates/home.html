@@ -18,7 +18,7 @@
         <div class="compatible-summary">
           <h3>Compatible With</h3>
           <div class="compatible-types">
-            {% for type in compatible_personalities.split %}
+            {% for type in compatible_personalities %}
             <span class="type-chip">{{ type }}</span>
             {% endfor %}
           </div>
@@ -45,7 +45,7 @@
                 <span class="username">{{ user.user.username }}</span>
                 <span class="user-type">{{ user.personality_type }}</span>
               </div>
-              <a href="#" class="btn-chat">
+              <a href="{% url 'connect' %}" class="btn-chat">
                 <i class="fas fa-comment-dots"></i>
               </a>
             </li>
