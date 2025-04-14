@@ -78,7 +78,8 @@
 
 
 <script>
-    const roomName = 'user1-user2'; 
+    // Dynamically extract room name from URL
+    const roomName = window.location.pathname.split('/').filter(Boolean).pop();
     const protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
     const chatSocket = new WebSocket(protocol + window.location.host + '/ws/chatroom/' + roomName + '/');
 
@@ -87,10 +88,9 @@
         const message = data['message'];
         const sender = data['sender'];
 
-        // Display message in chat log
         const chatLog = document.querySelector('#chat-log');
         chatLog.value += `${sender}: ${message}\n`;
-        chatLog.scrollTop = chatLog.scrollHeight;  // Auto-scroll
+        chatLog.scrollTop = chatLog.scrollHeight;
     };
 
     chatSocket.onclose = function(e) {
@@ -103,7 +103,7 @@
 
         if (message.trim() !== '') {
             chatSocket.send(JSON.stringify({'message': message}));
-            messageInputDom.value = '';  // Clear input
+            messageInputDom.value = '';
         }
     };
 </script>

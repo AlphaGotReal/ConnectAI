@@ -230,5 +230,11 @@ def predict(request):
     # Handle GET request or return empty form
     return render(request, 'result.html')
 
+@login_required
+#doesnt work
 def chat_room(request, room_name):
-    return render(request, 'chat_room.html', {'room_name': room_name})
+    users_in_room = room_name.split('-')
+    if request.user.username not in users_in_room:
+        return HttpResponseForbidden("You are not authorized to join this chatroom.")
+    
+    return render(request, 'chatroom.html', {'room_name': room_name})

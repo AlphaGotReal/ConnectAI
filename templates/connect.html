@@ -92,6 +92,12 @@
             {% if user.catchy_line %}
                 <div class="profile-line"><i class="fas fa-quote-left"></i> {{ user.catchy_line }}</div>
             {% endif %}
+            <div class="chat">
+                <button 
+                    class="btn btn-primary chat-btn" 
+                    data-username="{{ user.user.username }}"
+                >Chat</button>
+            </div>
         </div>
     {% empty %}
         <p class="no-users">No compatible users found.</p>
@@ -101,4 +107,36 @@
 <a href="{% url 'personality_test' %}" class="retake-link">
     <i class="fas fa-redo-alt"></i> Retake Personality Test
 </a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const loggedInUser = "{{ request.user.username }}";
+        const port = 9000;
+        const host = window.location.hostname;
+        const protocol = window.location.protocol === "https:" ? "https" : "http";
+
+        if (!loggedInUser) {
+            console.error("Error: Logged-in user is not defined.");
+            return;
+        }
+
+        document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('chat-btn')) {
+                const otherUser = event.target.getAttribute('data-username');
+                if (!otherUser) {
+                    console.error("Error: Other user is not defined.");
+                    return;
+                }
+
+                const users = [loggedInUser, otherUser].sort();
+                const roomName = `${users[0]}-${users[1]}`;
+                const chatRoomUrl = `${protocol}://${host}:${port}/chatroom/${roomName}/`;
+
+                console.log("Redirecting to:", chatRoomUrl);
+                window.location.href = chatRoomUrl;
+            }
+        });
+    });
+</script>
+
 {% endblock %}
