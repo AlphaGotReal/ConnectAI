@@ -8,7 +8,7 @@ from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.shortcuts import render
-from .models import Room
+from .models import Room, Message
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib import messages
@@ -232,12 +232,19 @@ def predict(request):
 
 @login_required
 def chat_room(request, room_name):
+    user = request.user.username
     try:
-        user1, user2 = room_name.split("-")
+        user1, user2 = room_name.split('-')
     except ValueError:
-        return HttpResponseForbidden("Invalid room name format.")
+        return HttpResponseForbidden("Invalid room name.")
 
-    if request.user.username not in [user1, user2]:
-        return HttpResponseForbidden("You are not authorized to join this chatroom.")
+    if user != user1 and user != user2:
+        return HttpResponseForbidden("You're not authorized to enter this chat room.")
 
-    return render(request, "chat_room.html", {"room_name": room_name})
+    messages = Message.objects.filter(room_name=room_name).order_by('timestamp').select_related('sender')
+
+    return render(request, "chat_room.html", {
+        "room_name": room_name,
+        "messages": messages,
+        "current_user": user
+    })
